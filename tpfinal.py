@@ -25,17 +25,31 @@ class Puro(Mago):
     def __init__(self, nombre, vida, estadoVarita, linaje):
         super().__init__(nombre, vida, estadoVarita)
         self.linaje = linaje
-
+    def mostrarEstado(self):
+        super().mostrarEstado()
+        print("Linaje:", self.linaje)
+        print("Tipo: Mago Puro")
 
 class Impuro(Mago):
 
     def __init__(self, nombre, vida, estadoVarita, origen):
         super().__init__(nombre, vida, estadoVarita)
         self.origen = origen
-
+    
+    def mostrarEstado(self):
+        super().mostrarEstado()
+        print("Origen:", self.origen)
+        print("Tipo: Mago Impuro")
 
 mago = Mago("Harry", 100, True)
+mago.mostrarEstado()
 
-puro = Puro("Voldemort", 90, True, "Muggles")
+print()
 
-impuro = Impuro("Hermione", 90, True, "Muggles")
+puro = Puro("Draco Malfoy", 90, True, "Malfoy")
+puro.mostrarEstado()
+
+print()
+
+impuro = Impuro("Hermione", 90, True, "Padres Muggles")
+impuro.mostrarEstado()
