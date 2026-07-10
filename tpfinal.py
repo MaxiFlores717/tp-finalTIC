@@ -7,18 +7,18 @@ class Mago:
     
     def mostrarEstado(self):
 
-    print("----- Datos del Mago -----")
-    print("Nombre:", self.nombre)
+        print("----- Datos del Mago -----")
+        print("Nombre:", self.nombre)
 
-    if self.vida > 0:
-        print("Vida:", self.vida)
-    else:
-        print("Vida: Sin Vida")
+        if self.vida > 0:
+            print("Vida:", self.vida)
+        else:
+            print("Vida: Sin Vida")
 
-    if self.estadoVarita:
-        print("Estado: Con Varita")
-    else:
-        print("Estado: Sin Varita")
+        if self.estadoVarita:
+            print("Estado: Con Varita")
+        else:
+            print("Estado: Sin Varita")
 
 class Puro(Mago):
 
