@@ -19,6 +19,16 @@ class Mago:
             print("Estado: Con Varita")
         else:
             print("Estado: Sin Varita")
+            
+    def atacar(self, hechizo, enemigo):
+        
+        if hechizo == "Expelliarmus":
+            enemigo.estadoVarita = False
+        elif hechizo == "Avada Kedrava":
+            enemigo.vida = 0
+        elif hechizo == "Crucio":
+            enemigo.vida = enemigo.vida - 30
+            
 
 class Puro(Mago):
 
@@ -52,4 +62,15 @@ puro.mostrarEstado()
 print()
 
 impuro = Impuro("Hermione", 90, True, "Padres Muggles")
+impuro2 = Impuro("Severus", 90, True, "Mestizo")
 impuro.mostrarEstado()
+
+#Ataques
+print()
+print("------ Ataques -------")
+print()
+impuro2.atacar("Crucio", impuro)
+impuro.atacar("Avada Kedrava", impuro2)
+impuro.mostrarEstado()
+print()
+impuro2.mostrarEstado()
