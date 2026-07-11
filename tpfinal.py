@@ -26,10 +26,14 @@ class Mago:
         
         if hechizo == "Expelliarmus":
             enemigo.estadoVarita = False
+            print(self.nombre ,"usó Expelliarmus con ", enemigo.nombre)
         elif hechizo == "Avada Kedavra":
             enemigo.vida = 0
+            print(self.nombre ,"usó Avada Kedrava con ", enemigo.nombre)
         elif hechizo == "Crucio":
             enemigo.vida -= 30
+            print(self.nombre ,"usó Crucio con ", enemigo.nombre)
+
     #  Agregado 
     # Se agregó un sistema de curación con probabilidad.
     # Cada vez que un mago utiliza el hechizo de curación existe un 30%
@@ -100,4 +104,15 @@ print()
 impuro = Impuro("Hermione", 90, True, "Padres Muggles")
 impuro2 = Impuro("Severus", 90, True, "Mestizo")
 impuro.mostrarEstado()
+
+print()
+print("----- Ataques ------")
+print()
+puro.atacar("Crucio", impuro2)
+print()
+impuro2.atacar("Expelliarmus", puro)
+print()
+impuro2.mostrarEstado()
+print()
+puro.mostrarEstado()
 
