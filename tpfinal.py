@@ -1,3 +1,5 @@
+import random
+
 class Mago:
 
     def __init__(self, nombre, vida, estadoVarita):
@@ -34,12 +36,12 @@ class Mago:
     # de probabilidad de recuperar toda la vida. En caso contrario,
     # recupera únicamente 30 puntos de vida.  
     def curar(self):
-    if random.random() < 0.30:
-        self.vida = 100
-        print("¡Curación completa!")
-    else:
-        self.vida = min(100, self.vida + 30)
-        print("Curación parcial (+30 de vida).")
+        if random.random() < 0.30:
+            self.vida = 100
+            print("¡Curación completa!")
+        else:
+            self.vida = min(100, self.vida + 30)
+            print("Curación parcial (+30 de vida).")
 
 class Puro(Mago):
 
