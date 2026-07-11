@@ -27,8 +27,19 @@ class Mago:
         elif hechizo == "Avada Kedravra":
             enemigo.vida = 0
         elif hechizo == "Crucio":
-            enemigo.vida = enemigo.vida - 30
-            
+            enemigo.vida -= 30
+    #  Agregado 
+    # Se agregó un sistema de curación con probabilidad.
+    # Cada vez que un mago utiliza el hechizo de curación existe un 30%
+    # de probabilidad de recuperar toda la vida. En caso contrario,
+    # recupera únicamente 30 puntos de vida.  
+    def curar(self):
+    if random.random() < 0.30:
+        self.vida = 100
+        print("¡Curación completa!")
+    else:
+        self.vida = min(100, self.vida + 30)
+        print("Curación parcial (+30 de vida).")
 
 class Puro(Mago):
 
