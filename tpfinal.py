@@ -42,6 +42,27 @@ class Mago:
         else:
             self.vida = min(100, self.vida + 30)
             print("Curación parcial (+30 de vida).")
+    def decidirAccion(self, enemigo):
+
+        numero = random.random()
+
+        # Si el mago tiene poca vida(menor a 40 de vida)
+        if self.vida <= 40:
+            if numero <= 0.70:
+                print(self.nombre, "decidió curarse.")
+                self.curar()
+            else:
+                print(self.nombre, "decidió usar Crucio.")
+                self.atacar("Crucio", enemigo)
+
+        # Si el mago tiene más de 40 de vida
+        else:
+            if numero <= 0.70:
+                print(self.nombre, "decidió usar Crucio.")
+                self.atacar("Crucio", enemigo)
+            else:
+                print(self.nombre, "decidió curarse.")
+                self.curar()
 
 class Puro(Mago):
 
@@ -64,8 +85,10 @@ class Impuro(Mago):
         print("Origen:", self.origen)
         print("Tipo: Mago Impuro")
 
-mago = Mago("Harry", 100, True)
+mago = Mago("Harry", 30, True)
+impuroP = Impuro("Hermione", 90, True, "Padres Muggles")
 mago.mostrarEstado()
+mago.decidirAccion(impuroP)
 
 print()
 
@@ -78,12 +101,3 @@ impuro = Impuro("Hermione", 90, True, "Padres Muggles")
 impuro2 = Impuro("Severus", 90, True, "Mestizo")
 impuro.mostrarEstado()
 
-#Ataques
-print()
-print("------ Ataques -------")
-print()
-impuro2.atacar("Crucio", impuro)
-impuro.atacar("Avada Kedavra", impuro2)
-impuro.mostrarEstado()
-print()
-impuro2.mostrarEstado()
