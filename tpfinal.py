@@ -26,7 +26,7 @@ class Mago:
         
         if hechizo == "Expelliarmus":
             enemigo.estadoVarita = False
-        elif hechizo == "Avada Kedravra":
+        elif hechizo == "Avada Kedavra":
             enemigo.vida = 0
         elif hechizo == "Crucio":
             enemigo.vida -= 30
@@ -83,7 +83,7 @@ print()
 print("------ Ataques -------")
 print()
 impuro2.atacar("Crucio", impuro)
-impuro.atacar("Avada Kedravra", impuro2)
+impuro.atacar("Avada Kedavra", impuro2)
 impuro.mostrarEstado()
 print()
 impuro2.mostrarEstado()
