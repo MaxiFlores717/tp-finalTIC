@@ -51,18 +51,26 @@ class Mago:
         numero = random.random()
 
         # Si el mago tiene poca vida(menor a 40 de vida)
-        if self.vida <= 40:
-            if numero <= 0.70:
-                self.curar()
-            else:
-                self.atacar("Crucio", enemigo)
+        #if self.vida <= 40:
+        #    if numero <= 0.70:
+        #        self.curar()
+        #    else:
+        #        self.atacar("Crucio", enemigo)
 
         # Si el mago tiene más de 40 de vida
+        #else:
+        #    if numero <= 0.70:
+        #        self.atacar("Crucio", enemigo)
+        #    else:
+        #        self.curar()
+
+        # si el mago tiene menos de 40 puntos de vida y el número aleatorio es menor o igual al 70%, decide curarse
+        # o si el mago tiene mas de 40 puntos de vida y el número es mayor a 0.70, tambien decide curarse
+        # caso contrario ataca, misma funcion solo que usando menor cantidad de ifs
+        if (self.vida <= 40 and numero <= 0.70) or (self.vida > 40 and numero > 0.70):
+            self.curar()
         else:
-            if numero <= 0.70:
-                self.atacar("Crucio", enemigo)
-            else:
-                self.curar()
+            self.atacar("Crucio", enemigo)
 
 class Puro(Mago):
 
