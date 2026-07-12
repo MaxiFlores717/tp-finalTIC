@@ -29,23 +29,23 @@ class Mago:
             print(self.nombre ,"usó Expelliarmus con ", enemigo.nombre)
         elif hechizo == "Avada Kedavra":
             enemigo.vida = 0
-            print(self.nombre ,"usó Avada Kedrava con ", enemigo.nombre)
+            print(self.nombre ,"usó Avada Kedavra con ", enemigo.nombre)
         elif hechizo == "Crucio":
             enemigo.vida -= 30
             print(self.nombre ,"usó Crucio con ", enemigo.nombre)
 
-    #  Agregado 
     # Se agregó un sistema de curación con probabilidad.
     # Cada vez que un mago utiliza el hechizo de curación existe un 30%
     # de probabilidad de recuperar toda la vida. En caso contrario,
-    # recupera únicamente 30 puntos de vida.  
+    # recupera únicamente 20 puntos de vida.  
     def curar(self):
         if random.random() < 0.30:
             self.vida = 100
-            print("¡Curación completa!")
+            print(self.nombre, "decidió usar la curación completa")
         else:
-            self.vida = min(100, self.vida + 30)
-            print("Curación parcial (+30 de vida).")
+            self.vida = min(100, self.vida + 20)
+            print(self.nombre, "usó la curación parcial (+20 de vida).")
+            
     def decidirAccion(self, enemigo):
 
         numero = random.random()
@@ -53,19 +53,15 @@ class Mago:
         # Si el mago tiene poca vida(menor a 40 de vida)
         if self.vida <= 40:
             if numero <= 0.70:
-                print(self.nombre, "decidió curarse.")
                 self.curar()
             else:
-                print(self.nombre, "decidió usar Crucio.")
                 self.atacar("Crucio", enemigo)
 
         # Si el mago tiene más de 40 de vida
         else:
             if numero <= 0.70:
-                print(self.nombre, "decidió usar Crucio.")
                 self.atacar("Crucio", enemigo)
             else:
-                print(self.nombre, "decidió curarse.")
                 self.curar()
 
 class Puro(Mago):
@@ -92,7 +88,7 @@ class Impuro(Mago):
 mago = Mago("Harry", 30, True)
 impuroP = Impuro("Hermione", 90, True, "Padres Muggles")
 mago.mostrarEstado()
-mago.decidirAccion(impuroP)
+# mago.decidirAccion(impuroP)
 
 print()
 
@@ -102,17 +98,20 @@ puro.mostrarEstado()
 print()
 
 impuro = Impuro("Hermione", 90, True, "Padres Muggles")
-impuro2 = Impuro("Severus", 90, True, "Mestizo")
+impuro2 = Impuro("Severus", 40, True, "Mestizo")
 impuro.mostrarEstado()
+print()
+impuro2.mostrarEstado()
 
 print()
 print("----- Ataques ------")
 print()
-puro.atacar("Crucio", impuro2)
+puro.decidirAccion(impuro)
 print()
-impuro2.atacar("Expelliarmus", puro)
+impuro.decidirAccion(puro)
+# impuro2.atacar("Expelliarmus", puro)
 print()
-impuro2.mostrarEstado()
+impuro.mostrarEstado()
 print()
 puro.mostrarEstado()
 
